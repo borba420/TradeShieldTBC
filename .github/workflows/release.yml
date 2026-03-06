@@ -30,11 +30,11 @@ jobs:
           generate_release_notes: true
 
       - name: Upload to CurseForge
-        if: startsWith(github.ref, 'refs/tags/') && secrets.CURSEFORGE_API_TOKEN != '' && secrets.CURSEFORGE_PROJECT_ID != ''
+        if: startsWith(github.ref, 'refs/tags/') && (secrets.CF_API_KEY != '' || secrets.CURSEFORGE_API_TOKEN != '') && (secrets.CURSEFORGE_PROJECT_ID != '' || secrets.CURSEFORGE_PROJECT != '')
         uses: itsmeow/curseforge-upload@v3.1.2
         with:
-          token: ${{ secrets.CURSEFORGE_API_TOKEN }}
-          project_id: ${{ secrets.CURSEFORGE_PROJECT_ID }}
+          token: ${{ secrets.CF_API_KEY != '' && secrets.CF_API_KEY || secrets.CURSEFORGE_API_TOKEN }}
+          project_id: ${{ secrets.CURSEFORGE_PROJECT_ID != '' && secrets.CURSEFORGE_PROJECT_ID || secrets.CURSEFORGE_PROJECT }}
           game_endpoint: wow
           file_path: TradeShieldTBC.zip
           release_type: release
