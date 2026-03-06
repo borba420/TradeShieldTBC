@@ -1,5 +1,10 @@
 # TradeShieldTBC Changelog
 
+## 1.1.4
+- Reworked release workflow to use `gh release create` for reliable GitHub releases on tagged pushes.
+- Kept CurseForge upload in the same workflow, triggered on `v*` tags.
+- Added explicit tag-only guards for release and CurseForge publish steps.
+
 ## 1.1.3
 - Added automated CurseForge publishing in the GitHub Actions release pipeline.
 - Release workflow now uploads both GitHub release artifact and CurseForge package for `v*` tags.
@@ -16,7 +21,7 @@
   - Left click prints current status; right click toggles master alert sound.
   - Persistence uses `TradeShieldTBCDB.minimap`.
 - Added `CHANGELOG.md`.
-- `/ts status` now includes mail sound + whitelist counts and current sound mode.
+  - `/ts status` now includes mail sound + whitelist counts and current sound mode.
 
 ## 1.0.1
 - Stability and trade checks fixes from the anniversary build:
