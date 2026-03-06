@@ -1,5 +1,10 @@
 # TradeShieldTBC Changelog
 
+## 1.1.11
+- Updated CurseForge project ID metadata to 1478379.
+- Version bump for auto-update release verification.
+
+
 ## 1.1.9
 - Restored classic `zip` packaging step for release workflow reliability.
 - Kept `softprops/action-gh-release` + CurseForge upload on tagged releases.
