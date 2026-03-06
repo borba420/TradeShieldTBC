@@ -1,52 +1,19 @@
-name: release
+name: Release
 
 on:
-  workflow_dispatch:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
-  build-release:
+  package:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Build release zip
-        run: |
-          zip -r TradeShieldTBC.zip CHANGELOG.md Core.lua TradeShieldTBC.toc
-
-      - name: Create GitHub Release
-        if: startsWith(github.ref, 'refs/tags/')
-        uses: softprops/action-gh-release@v2
+      - uses: actions/checkout@v4
         with:
-          files: TradeShieldTBC.zip
-          token: ${{ github.token }}
-          name: "TradeShieldTBC ${{ github.ref_name }}"
-          tag_name: ${{ github.ref_name }}
-          generate_release_notes: true
+          fetch-depth: 0
 
-      - name: Prepare CurseForge credentials
-        if: startsWith(github.ref, 'refs/tags/')
+      - name: Package and upload to CurseForge
+        uses: BigWigsMods/packager@v2
         env:
           CF_API_KEY: ${{ secrets.CF_API_KEY }}
-          CURSEFORGE_API_TOKEN: ${{ secrets.CURSEFORGE_API_TOKEN }}
-          CURSEFORGE_PROJECT_ID: ${{ secrets.CURSEFORGE_PROJECT_ID }}
-          CURSEFORGE_PROJECT: ${{ secrets.CURSEFORGE_PROJECT }}
-        run: |
-          echo "CF_TOKEN=${CF_API_KEY:-$CURSEFORGE_API_TOKEN}" >> "$GITHUB_ENV"
-          echo "CF_PROJECT=${CURSEFORGE_PROJECT_ID:-$CURSEFORGE_PROJECT}" >> "$GITHUB_ENV"
-
-      - name: Upload to CurseForge
-        if: startsWith(github.ref, 'refs/tags/') && env.CF_TOKEN != '' && env.CF_PROJECT != ''
-        uses: itsmeow/curseforge-upload@v3.1.2
-        with:
-          token: ${{ env.CF_TOKEN }}
-          project_id: ${{ env.CF_PROJECT }}
-          game_endpoint: wow
-          file_path: TradeShieldTBC.zip
-          release_type: release
-          changelog: "${{ github.ref_name }}"
