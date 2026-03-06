@@ -1,18 +1,9 @@
 # Build/Test artifacts
 *.zip
+*.rar
 *.luac
 
 # Editor / OS files
-.vscode/
 .DS_Store
 Thumbs.db
-.idea/
-*.swp
-*.swo
-
-# Temporary workflow logs
-/tmp_workflow_logs/
-tmp_workflow_logs/
-
-# GitHub metadata and docs not for addon package
-.github/
+.vscode/
