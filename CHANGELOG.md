@@ -1,5 +1,9 @@
 # TradeShieldTBC Changelog
 
+## 1.1.9
+- Restored classic `zip` packaging step for release workflow reliability.
+- Kept `softprops/action-gh-release` + CurseForge upload on tagged releases.
+
 ## 1.1.8
 - Reverted to `softprops/action-gh-release` for GitHub release creation to match a previously stable workflow pattern.
 - Kept Python-based deterministic zip creation and CurseForge upload in `v*` tag workflow.
