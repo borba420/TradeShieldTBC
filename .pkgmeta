@@ -1,0 +1,12 @@
+package-as: TradeShieldTBC
+
+ignore:
+  - .git
+  - .github
+  - .gitignore
+  - .pkgmeta
+  - .vscode
+  - tmp_workflow_logs
+  - '*.zip'
+  - '*.psd'
+  - Thumbs.db
