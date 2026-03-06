@@ -1,8 +1,8 @@
 # TradeShieldTBC Changelog
 
-## 1.1.6
-- Replaced release archive creation with Python-based ZIP packaging to avoid shell dependency differences.
-- Kept tagged `v*`-only release + CurseForge upload flow in GitHub Actions.
+## 1.1.8
+- Reverted to `softprops/action-gh-release` for GitHub release creation to match a previously stable workflow pattern.
+- Kept Python-based deterministic zip creation and CurseForge upload in `v*` tag workflow.
 
 ## 1.1.4
 - Added automated CurseForge publishing in the GitHub Actions release pipeline.
