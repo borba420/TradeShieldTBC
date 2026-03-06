@@ -20,3 +20,6 @@
   - Added stack-count comparison and same-icon swap detection for trade target changes.
   - Added item count aware swap/reduction checks to reduce false positives.
   - Added player/target warning counters and stable-time strict-mode guard.
+
+- 1.1.1
+- Added GitHub Actions release workflow and release zip artifact.
