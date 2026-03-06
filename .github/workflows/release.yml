@@ -1,4 +1,4 @@
-﻿name: release
+name: release
 
 on:
   workflow_dispatch:
@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: read
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,3 +25,13 @@ jobs:
         with:
           files: TradeShieldTBC.zip
 
+      - name: Upload to CurseForge
+        if: ${{ secrets.CURSEFORGE_API_TOKEN != '' && secrets.CURSEFORGE_PROJECT_ID != '' }}
+        uses: itsmeow/curseforge-upload@v3.1.2
+        with:
+          token: ${{ secrets.CURSEFORGE_API_TOKEN }}
+          project_id: ${{ secrets.CURSEFORGE_PROJECT_ID }}
+          game_endpoint: wow
+          file_path: TradeShieldTBC.zip
+          release_type: release
+          changelog: ${{ github.ref_name }}

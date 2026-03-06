@@ -1,4 +1,9 @@
-﻿# TradeShieldTBC Changelog
+# TradeShieldTBC Changelog
+
+## 1.1.3
+- Added automated CurseForge publishing in the GitHub Actions release pipeline.
+- Release workflow now uploads both GitHub release artifact and CurseForge package for `v*` tags.
+- Added a conditional guard so CurseForge upload only runs when API token/project secrets are configured.
 
 ## 1.1.0
 - Added mail risk controls
