@@ -23,3 +23,6 @@
 
 - 1.1.1
 - Added GitHub Actions release workflow and release zip artifact.
+
+## 1.1.2
+- Release pipeline test for Actions-based auto-update.
