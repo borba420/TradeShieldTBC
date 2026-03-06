@@ -21,10 +21,14 @@ jobs:
 
       - name: Create GitHub Release
         if: startsWith(github.ref, 'refs/tags/')
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-        run: |
-          gh release create "${GITHUB_REF_NAME}" TradeShieldTBC.zip --title "TradeShieldTBC ${GITHUB_REF_NAME}" --generate-notes
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ github.ref_name }}
+          name: TradeShieldTBC ${{ github.ref_name }}
+          token: ${{ github.token }}
+          allowUpdates: true
+          generateReleaseNotes: true
+          artifacts: TradeShieldTBC.zip
 
       - name: Upload to CurseForge
         if: startsWith(github.ref, 'refs/tags/') && secrets.CURSEFORGE_API_TOKEN != '' && secrets.CURSEFORGE_PROJECT_ID != ''
