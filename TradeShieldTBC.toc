@@ -1,0 +1,9 @@
+﻿## Interface: 20504
+## Title: TradeShield TBC
+## Notes: Trade and mail safety checks for Burning Crusade Classic.
+## Author: Codex
+## Version: 1.1.0
+## SavedVariables: TradeShieldTBCDB
+## OptionalDeps: LibDataBroker-1.1, LibDBIcon-1.0
+
+Core.lua
