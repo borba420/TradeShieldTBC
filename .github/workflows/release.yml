@@ -1,6 +1,7 @@
 ﻿name: release
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - 'v*'
@@ -22,3 +23,4 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: TradeShieldTBC.zip
+
