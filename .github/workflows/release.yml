@@ -17,7 +17,12 @@ jobs:
 
       - name: Build release zip
         run: |
-          zip -r TradeShieldTBC.zip CHANGELOG.md Core.lua TradeShieldTBC.toc
+          python - <<'PY'
+          import zipfile
+          with zipfile.ZipFile('TradeShieldTBC.zip', 'w', zipfile.ZIP_DEFLATED) as z:
+              for path in ('CHANGELOG.md', 'Core.lua', 'TradeShieldTBC.toc'):
+                  z.write(path)
+          PY
 
       - name: Create GitHub Release
         if: startsWith(github.ref, 'refs/tags/')

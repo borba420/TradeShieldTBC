@@ -1,11 +1,10 @@
 # TradeShieldTBC Changelog
 
-## 1.1.4
-- Reworked release workflow to use `gh release create` for reliable GitHub releases on tagged pushes.
-- Kept CurseForge upload in the same workflow, triggered on `v*` tags.
-- Added explicit tag-only guards for release and CurseForge publish steps.
+## 1.1.6
+- Replaced release archive creation with Python-based ZIP packaging to avoid shell dependency differences.
+- Kept tagged `v*`-only release + CurseForge upload flow in GitHub Actions.
 
-## 1.1.3
+## 1.1.4
 - Added automated CurseForge publishing in the GitHub Actions release pipeline.
 - Release workflow now uploads both GitHub release artifact and CurseForge package for `v*` tags.
 - Added a conditional guard so CurseForge upload only runs when API token/project secrets are configured.
